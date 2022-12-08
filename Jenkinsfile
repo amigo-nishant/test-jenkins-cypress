@@ -26,6 +26,7 @@ pipeline {
             steps {
                 sh "npm i"
                 sh "npm install cypress --save-dev"
+                sh "npx cypress run --browser ${BROWSER} --spec ${scripts}"
             }
         }
         
