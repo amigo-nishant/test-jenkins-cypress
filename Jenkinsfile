@@ -5,6 +5,7 @@ pipeline {
     tools {nodejs "Node16"}
     
     parameters {
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/**/**'
         choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'])
     }
@@ -26,7 +27,7 @@ pipeline {
             steps {
                 sh "npm i"
                 sh "npm install cypress --save-dev"
-                sh "npx cypress run --browser ${BROWSER} --spec ${scripts}"
+                sh "npx cypress run --browser ${BROWSER} --spec ${scripts} --spec ${SPEC}"
             }
         }
         
