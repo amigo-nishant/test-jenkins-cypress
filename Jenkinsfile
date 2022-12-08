@@ -28,7 +28,7 @@ pipeline {
                 command -v nvm
                 nvm install 16.0.0
                 npm i
-                npx cypress run --browser ${BROWSER} --scripts ${scripts} --spec ${SPEC}
+                npx cypress run --browser "${BROWSER}" --scripts "${scripts}"
                 """
             }
         }
