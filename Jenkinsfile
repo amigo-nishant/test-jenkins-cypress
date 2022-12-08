@@ -1,6 +1,8 @@
 pipeline {
    
     agent any
+   
+    tools {nodejs "Node16"}
     
     parameters {
         choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
