@@ -6,10 +6,7 @@ pipeline {
         choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'])
     }
-    
-    options {
-        ansiColor('xterm')
-    }
+   
 
     //The stage directive goes in the stages section and should contain a steps section, an optional agent section, 
     //or other stage-specific directives. Practically speaking, all of the real work done by a Pipeline will be wrapped
