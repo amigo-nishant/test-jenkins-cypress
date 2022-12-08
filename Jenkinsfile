@@ -6,8 +6,8 @@ pipeline {
     
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/**/**'
-        choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'])
+        choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
     }
    
 
