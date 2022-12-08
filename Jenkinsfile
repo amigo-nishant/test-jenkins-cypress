@@ -22,12 +22,14 @@ pipeline {
         
         stage('Testing') {
             steps {
-                sh "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash"
-                sh 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
-                sh "command -v nvm"
-                sh "nvm install 16.0.0"
-                sh "npm i"
-                sh "npx cypress run --browser ${BROWSER} --scripts ${scripts} --spec ${SPEC}"
+                sh """
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+                export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                command -v nvm
+                nvm install 16.0.0
+                npm i
+                npx cypress run --browser ${BROWSER} --scripts ${scripts} --spec ${SPEC}
+                """
             }
         }
         
