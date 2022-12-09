@@ -5,7 +5,7 @@ pipeline {
     tools {nodejs "Node16"}
     
     parameters {
-        string(name: 'SPEC', defaultValue: "cypress/e2e/**/*")
+        string(name: 'SPEC', defaultValue: "cypress/e2e/")
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'electron'])
         choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
     }
