@@ -26,7 +26,7 @@ pipeline {
                 sh "npm install mocha"
                 sh "npm install mochawesome"
                 sh "npm install -D cypress-iframe"
-                sh "npx cypress run --browser ${BROWSER} --spec ${Scripts} --spec ${SPEC}"
+                sh "npx cypress run --browser ${BROWSER} --scripts ${Scripts} --spec ${SPEC}"
                
             }
         }
