@@ -23,9 +23,6 @@ pipeline {
             steps {
                 sh "npm i"
                 sh "npm install cypress --save-dev"
-                sh "npm install mocha"
-                sh "npm install mochawesome"
-                sh "npm install -D cypress-iframe"
                 script {
                 if (params.Scripts == "spec.cy.js")
                 sh "npx cypress run --browser ${BROWSER} --spec cypress/e2e/spec.cy.js"
