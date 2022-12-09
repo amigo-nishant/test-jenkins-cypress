@@ -5,9 +5,9 @@ pipeline {
     tools {nodejs "Node16"}
     
     parameters {
-        string(name: 'SPEC', defaultValue: "cypress/e2e/")
+        //string(name: 'SPEC', defaultValue: "cypress/e2e/")
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'electron'])
-        // choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
+        choice(name: 'Scripts', choices: ['spec.cy.js', 'window.cy.js'])
     }
    
     stages {
@@ -26,7 +26,10 @@ pipeline {
                 sh "npm install mocha"
                 sh "npm install mochawesome"
                 sh "npm install -D cypress-iframe"
-                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                if(params.Scripts=='spec.cy.js')
+                sh "npx cypress run --browser ${BROWSER} --spec cypress/e2e/spec.cy.js"
+                else
+                sh "npx cypress run --browser ${BROWSER} --spec cypress/e2e/window.cy.js"
                
             }
         }
